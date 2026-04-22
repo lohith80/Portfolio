@@ -18,7 +18,7 @@ export default function TriagePage() {
           caption="5 steps · make the call · your decisions are scored"
         />
         <p className="mt-3 text-[13px] text-slate-400">
-          <span className="text-slate-500">// </span>
+          <span className="text-slate-500">{'// '}</span>
           Each step shows the alert JSON, the query (Splunk SPL + Sentinel KQL), the MITRE mapping,
           and a decision. Pick what you would do. The final debrief is the post-incident report I
           actually wrote after the real investigation this simulation is based on.

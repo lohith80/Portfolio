@@ -18,7 +18,7 @@ export default function AttackMatrixPage() {
           caption="click any cell for tooling + representative SPL / KQL / Sigma"
         />
         <p className="mt-3 max-w-3xl text-[13px] text-slate-400">
-          <span className="text-slate-500">// </span>
+          <span className="text-slate-500">{'// '}</span>
           Green = deployed detection. Amber = active hunt. Magenta = investigated during IR.
           Slate = not yet covered (honest).
         </p>

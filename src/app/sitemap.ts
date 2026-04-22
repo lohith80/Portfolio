@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { projects } from '@content/projects';
 
 const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://indulohithnarisetty.com';
+export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = ['', '/detections', '/projects', '/experience', '/skills', '/attack-matrix', '/triage', '/book'];

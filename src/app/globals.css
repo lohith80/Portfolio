@@ -94,7 +94,8 @@
 
   /* ───── TTY framing ───── */
   .tty {
-    @apply relative border border-phos/25 bg-[var(--bg-crt)]/90;
+    @apply relative border border-phos/25;
+    background-color: rgba(6, 8, 15, 0.9);
     box-shadow: inset 0 0 60px rgba(94, 242, 255, 0.04), 0 0 0 1px rgba(94, 242, 255, 0.04);
   }
 
@@ -159,9 +160,24 @@
     @apply chip border-amber/40 bg-amber/[0.05] text-amber-300;
   }
 
-  .chip-crit { @apply chip border-sev-crit/50 bg-sev-crit/[0.06] text-[color:var(--sev-crit)]; }
-  .chip-high { @apply chip border-[color:var(--sev-high)]/50 bg-[color:var(--sev-high)]/[0.06] text-[color:var(--sev-high)]; }
-  .chip-med  { @apply chip border-[color:var(--sev-med)]/50 bg-[color:var(--sev-med)]/[0.06] text-[color:var(--sev-med)]; }
+  .chip-crit {
+    @apply chip;
+    border-color: rgba(255, 46, 99, 0.5);
+    background-color: rgba(255, 46, 99, 0.06);
+    color: var(--sev-crit);
+  }
+  .chip-high {
+    @apply chip;
+    border-color: rgba(255, 138, 61, 0.5);
+    background-color: rgba(255, 138, 61, 0.06);
+    color: var(--sev-high);
+  }
+  .chip-med {
+    @apply chip;
+    border-color: rgba(255, 210, 74, 0.5);
+    background-color: rgba(255, 210, 74, 0.06);
+    color: var(--sev-med);
+  }
 
   /* ───── Bracketed TTY "buttons" ───── */
   .tty-link {

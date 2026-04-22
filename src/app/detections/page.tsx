@@ -102,7 +102,7 @@ export default function DetectionsPage() {
               </dl>
 
               <p className="text-[13px] leading-relaxed text-slate-300">
-                <span className="text-slate-500">// </span>{d.description}
+                <span className="text-slate-500">{'// '}</span>{d.description}
               </p>
 
               {/* queries */}

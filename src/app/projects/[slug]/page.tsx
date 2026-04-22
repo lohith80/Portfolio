@@ -11,8 +11,9 @@ export async function generateStaticParams() {
   return slugs.map((slug) => ({ slug }));
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  const project = projects.find((p) => p.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
   if (!project) return { title: 'Not found' };
   return {
     title: project.title,
@@ -33,9 +34,10 @@ const STATUS_CLASS: Record<string, string> = {
   research: 'chip-magenta',
 };
 
-export default async function ProjectPage({ params }: { params: { slug: string } }) {
-  const project = projects.find((p) => p.slug === params.slug);
-  const mdx = await readProjectMdx(params.slug);
+export default async function ProjectPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const project = projects.find((p) => p.slug === slug);
+  const mdx = await readProjectMdx(slug);
   if (!project || !mdx) notFound();
 
   return (

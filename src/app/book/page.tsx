@@ -19,7 +19,7 @@ export default function BookPage() {
           caption="cal.com embed · auto-creates meet link · blocks calendar"
         />
         <p className="mt-3 text-[13px] text-slate-400">
-          <span className="text-slate-500">// </span>
+          <span className="text-slate-500">{'// '}</span>
           Pick any free slot. A Google Meet link drops into the confirmation email. No API keys, no
           back-and-forth, no marketing funnel. If nothing below works, mail{' '}
           <a href={`mailto:${profile.email}`} className="text-phos">{profile.email}</a> and I will

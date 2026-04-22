@@ -112,7 +112,7 @@ export default function LandingPage() {
               </span>
             </header>
             <p className="mb-2 text-[13px] text-slate-400">
-              <span className="text-slate-500">// </span>{d.description}
+              <span className="text-slate-500">{'// '}</span>{d.description}
             </p>
             <CodeBlock
               lang={d.logic[0].lang as 'KQL' | 'SPL' | 'Sigma'}
