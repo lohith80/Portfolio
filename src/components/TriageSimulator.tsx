@@ -72,6 +72,9 @@ export function TriageSimulator() {
               : state === 'wrong'
               ? 'bg-sev-crit/60 border-sev-crit'
               : 'bg-ink-700 border-ink-600';
+          // Use light text on the dark unpicked bg (ink-700) so contrast passes WCAG AA;
+          // keep the dark ink-950 text on the bright picked pills (phos/amber/crit) where it has contrast.
+          const textColor = state ? 'text-ink-950' : 'text-slate-100';
           return (
             <button
               type="button"
@@ -81,7 +84,7 @@ export function TriageSimulator() {
                 'flex-shrink-0 rounded-sm border px-3 py-1.5 text-tiny uppercase tracking-[0.12em] transition',
                 i === stepIdx ? 'ring-1 ring-phos' : 'opacity-70 hover:opacity-100',
                 color,
-                'text-ink-950',
+                textColor,
               )}
               aria-current={i === stepIdx ? 'step' : undefined}
             >
@@ -109,13 +112,13 @@ export function TriageSimulator() {
             <dl className="mt-3 space-y-1 border-t border-ink-600/50 pt-3 text-xs">
               {step.alertCard.entities.map((e) => (
                 <div key={e.label} className="grid grid-cols-3 gap-2">
-                  <dt className="text-slate-500 uppercase tracking-[0.14em]">{e.label}</dt>
+                  <dt className="text-slate-400 uppercase tracking-[0.14em]">{e.label}</dt>
                   <dd className="col-span-2 break-all font-mono text-slate-200">{e.value}</dd>
                 </div>
               ))}
             </dl>
             <div className="mt-3 flex flex-wrap gap-1.5 border-t border-ink-600/50 pt-3 text-tiny uppercase tracking-[0.12em]">
-              <span className="text-slate-500">ATT&amp;CK:</span>
+              <span className="text-slate-400">ATT&amp;CK:</span>
               {step.attack.map((a) => (
                 <span key={a} className="chip">
                   {a}
@@ -126,7 +129,8 @@ export function TriageSimulator() {
         </aside>
 
         <div className="lg:col-span-7">
-          <h3 className="section-label">step {step.id} · {step.tactic}</h3>
+          {/* Annotation line; `<p>` rather than a heading so screen-reader heading order stays h2 -> h2. */}
+          <p className="section-label">step {step.id} · {step.tactic}</p>
           <h2 className="mt-1 font-display text-xl text-phos">{step.title}</h2>
           <p className="mt-2 text-sm leading-relaxed text-slate-300">{step.narration}</p>
 
@@ -134,7 +138,8 @@ export function TriageSimulator() {
           {step.spl ? <QueryBlock lang="SPL" code={step.spl} /> : null}
 
           <div className="mt-4 space-y-2">
-            <h4 className="section-label">what do you do?</h4>
+            {/* Question prompt; not a section heading — converting to `<p>` avoids h2 -> h4 skip. */}
+            <p className="section-label">what do you do?</p>
             {step.choices.map((c) => {
               const chosen = picksForThisStep === c.id;
               const anyChosen = Boolean(picksForThisStep);
@@ -188,7 +193,7 @@ export function TriageSimulator() {
 
           {picksForThisStep ? (
             <div className="mt-4 rounded-sm border border-ink-600 bg-ink-900/60 p-3 text-sm">
-              <div className="text-tiny uppercase tracking-[0.18em] text-slate-500">debrief</div>
+              <div className="text-tiny uppercase tracking-[0.18em] text-slate-400">debrief</div>
               <p className="mt-1 text-slate-300">{step.debrief}</p>
               <button
                 type="button"
@@ -202,10 +207,10 @@ export function TriageSimulator() {
         </div>
       </section>
 
-      <div className="text-xs text-slate-500">
+      <div className="text-xs text-slate-400">
         Score so far:{' '}
         <span className="text-phos">{score}</span>
-        <span className="text-slate-600"> / {steps.length}</span>
+        <span className="text-slate-500"> / {steps.length}</span>
         <button type="button" onClick={reset} className="ml-3 underline decoration-ink-600 hover:text-phos">
           reset
         </button>
@@ -229,7 +234,7 @@ export function TriageSimulator() {
                 className="text-slate-400 hover:text-phos"
                 aria-label="Close"
               >
-                ✕
+                <span aria-hidden="true">✕</span>
               </button>
             </header>
             <pre className="max-h-[70vh] overflow-auto whitespace-pre-wrap border-b border-ink-600 p-4 font-mono text-xs text-slate-200">

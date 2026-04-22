@@ -15,3 +15,5 @@ workers/*/.wrangler
 .vscode/
 coverage/
 tsconfig.tsbuildinfo
+.claude/
+.lighthouseci/

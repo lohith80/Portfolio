@@ -64,7 +64,9 @@ const config: Config = {
       },
       fontSize: {
         'xs': ['0.75rem', { lineHeight: '1.1rem', letterSpacing: '0.02em' }],
-        'tiny': ['0.68rem', { lineHeight: '0.95rem', letterSpacing: '0.08em' }],
+        // Lighthouse font-size audit requires >= 12px; bump from 0.68rem to 0.75rem and keep
+        // tight line-height + wider tracking so the terminal-chip feel is preserved.
+        'tiny': ['0.75rem', { lineHeight: '1rem', letterSpacing: '0.08em' }],
       },
       boxShadow: {
         phos: '0 0 24px rgba(94, 242, 255, 0.35)',

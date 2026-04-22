@@ -77,6 +77,15 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${jetbrains.variable} ${plex.variable} ${inter.variable}`}>
+      <head>
+        {/* Preconnect to third-party origins used on page load: visitor-counter worker + Cal.com embed.
+            next/font/google already handles fonts.gstatic.com preconnect automatically. */}
+        <link rel="preconnect" href="https://visitor-counter.indulohithnarisetty.workers.dev" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://visitor-counter.indulohithnarisetty.workers.dev" />
+        <link rel="preconnect" href="https://cal.com" />
+        <link rel="dns-prefetch" href="https://cal.com" />
+        <link rel="dns-prefetch" href="https://app.cal.com" />
+      </head>
       <body className="antialiased pb-8">
         <a
           href="#main"

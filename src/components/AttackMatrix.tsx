@@ -245,7 +245,7 @@ function DetailModal({ tech, onClose }: { tech: Technique; onClose: () => void }
             className="rounded-sm px-2 py-0.5 text-slate-400 hover:text-phos"
             aria-label="Close"
           >
-            ✕
+            <span aria-hidden="true">✕</span>
           </button>
         </header>
         <div className="space-y-4 px-4 py-4 text-sm">
