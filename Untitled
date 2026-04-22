@@ -1,0 +1,2 @@
+cd workers/visitor-counter
+npm install

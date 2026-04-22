@@ -6,11 +6,11 @@ workers_dev = true
 # Bind the KV namespace. Replace `id` after running `wrangler kv namespace create VISITOR_COUNTER`.
 [[kv_namespaces]]
 binding = "COUNTER"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
+id = "f680ed26156f4a2e80d37e1cf5c41cc2"
 
 [vars]
 # Comma-separated list of allowed origins. Use "*" during local dev.
-ALLOWED_ORIGINS = "https://indulohithnarisetty.com,https://*.pages.dev"
+ALLOWED_ORIGINS = "https://indulohithnarisetty.com,https://www.indulohithnarisetty.com,https://portfolio-8zn.pages.dev,http://localhost:3000,http://localhost:4173"
 
 # Optional: expose a stable subdomain under your zone.
 # [[routes]]
