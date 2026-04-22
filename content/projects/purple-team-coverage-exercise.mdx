@@ -1,0 +1,30 @@
+---
+slug: purple-team-coverage-exercise
+title: Purple-Team Coverage Exercise
+tagline: Offense replays → measurable Persistence + Defense-Evasion coverage uplift
+---
+
+## Premise
+
+A purple team that ends with "the red team wins" is a blue team on a bad day. A purple team that ends with *new detections shipped* is detection engineering.
+
+## The exercise
+
+- Offense (partnered red-team) executed selected Atomic Red Team tests targeting Persistence (T1547, T1053) and Defense Evasion (T1027, T1562.001, T1070.004).
+- Blue side ran live telemetry capture across Splunk ES, Sentinel, Defender for Endpoint, and Falcon.
+- For each TTP: did a rule fire? A hunt surface it? Or was it silent?
+
+## Results
+
+| Tactic           | TTPs replayed | Caught live | Hunt signal | Silent |
+| ---------------- | ------------- | ----------- | ----------- | ------ |
+| Persistence      | 9             | 5           | 2           | 2      |
+| Defense Evasion  | 7             | 3           | 1           | 3      |
+
+## What shipped
+
+12 Sigma rules authored, reviewed, validated in lab, pushed to production, linked to the originating ATT&CK cell in the Detection Coverage Map.
+
+## The engineering discipline this enforces
+
+Purple-team findings that do not ship as rules within 30 days go stale. The exercise created a backlog owner and a weekly rule-ship target. Every silent TTP now has a name, a deadline, and a detection-engineer assigned.

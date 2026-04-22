@@ -1,0 +1,33 @@
+---
+slug: mitre-coverage-map
+title: MITRE ATT&CK Detection Coverage Map
+tagline: Live heatmap of deployed SPL/KQL detections vs. ATT&CK Enterprise
+---
+
+## Why I built it
+
+"Are we covered?" is the wrong question. The right question is: *which tactics, and to what depth, across which data sources?* The Detection Coverage Map makes the answer honest — it shows the SOC what is detected, what is only hunted, and what we are blind to.
+
+## How it works
+
+- Every Splunk correlation search and every Sentinel analytic rule has an `attack_technique` tag.
+- A Python job walks the Splunk REST API + Sentinel Graph API, extracts the technique tags, and builds an ATT&CK Navigator JSON layer.
+- The layer is rendered server-side as a heatmap and overlaid on the public matrix on this site.
+
+## Output
+
+Each technique cell carries:
+
+- **Coverage level** — *deployed detection*, *active hunt*, *investigated IR*, or *aware*.
+- **Tooling** — which platform carries the rule (Splunk ES, Sentinel, Falcon, Defender, CloudTrail-driven).
+- **Detection sample** — a click reveals the actual SPL / KQL / Sigma (sanitised) the rule is built on.
+
+## How the SOC uses it
+
+- **Monthly**: a "gap sprint" picks the darkest column and ships 3 new detections into it.
+- **Quarterly**: purple-team findings are overlaid — green where we caught the replay, red where we did not.
+- **Every new threat-intel report**: we map the reported TTPs to the matrix in minutes and know whether we are covered before an analyst opens an investigation.
+
+## Why it matters for detection engineering
+
+Without a live coverage map, every new detection is optional. With one, every uncovered cell is a visible backlog item with a name and a priority. The backlog stops being an opinion.

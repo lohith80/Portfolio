@@ -1,0 +1,45 @@
+---
+slug: sigma-detection-library
+title: Sigma Detection Library
+tagline: Personal detection-as-code repo — Splunk + Elastic validated
+---
+
+## Detection-as-code, practiced in the open
+
+A growing personal repository of Sigma rules, each mapped to ATT&CK, each linted by pysigma in CI, and each validated against a Splunk Free + Elastic trial lab before a tag cuts a release.
+
+## Structure
+
+```text
+rules/
+  windows/
+    credential-access/
+      lsass_minidump.yml
+      dcsync_non_dc.yml
+    persistence/
+      run_key_from_office_child.yml
+  linux/
+    execution/
+      curl_pipe_sh.yml
+  cloud/
+    aws/
+      root_key_creation.yml
+      cloudtrail_tamper.yml
+ci/
+  lint.yml      # pysigma check-rules
+  convert.yml   # sigma → SPL / KQL / ES|QL per backend
+lab/
+  splunk/       # docker compose for ad-hoc validation
+  elastic/
+```
+
+## What makes a rule merge
+
+1. **Mapped** — title, `tags:` with the ATT&CK technique, `references:` to the originating CTI or CVE.
+2. **Linted** — `pysigma check-rules` passes, field names match the target taxonomy.
+3. **Validated** — fires on a known-bad replay (atomic-red-team, purpleteam-cli) and stays silent on a 24h benign trace.
+4. **Cost-modelled** — a note on approximate events-per-day the rule will generate at a medium-size enterprise.
+
+## Why it doubles as a portfolio artefact
+
+Every rule is a short, self-contained writeup of how an attacker behaves and how a defender proves it. Recruiters can skim three files and know what "detection engineering" means in my hands. Interviewers can ask about a rule I authored and we can reason about it together.

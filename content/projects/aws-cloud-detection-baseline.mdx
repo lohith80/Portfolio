@@ -1,0 +1,45 @@
+---
+slug: aws-cloud-detection-baseline
+title: AWS Cloud Detection Baseline
+tagline: Multi-account GuardDuty + CloudTrail + Config detection baseline
+---
+
+## Scope
+
+Multi-account AWS organisation. Default landing zone, org-trail, cross-account log aggregation into a central security account. The baseline is the non-negotiable detection floor for any new account spinning up — delivered via StackSets.
+
+## What ships with every new account
+
+- **GuardDuty** — enabled by default, findings exported to the central EventBridge bus.
+- **CloudTrail** — org-wide multi-region trail, log file validation on, data events enabled for S3 + Lambda on sensitive accounts.
+- **AWS Config** — config history + conformance packs for CIS + Security Hub AFSBP.
+- **IAM Access Analyzer** — organisation-wide, external-access findings piped to Sentinel.
+
+## The 20+ KQL analytics layered on top
+
+Every CloudTrail + GuardDuty finding lands in Sentinel via AWS S3 connector. Sample analytics:
+
+- **IAM priv-esc attempts** — policy attach to a role not in the change-management whitelist
+- **Console login without MFA** — any identity
+- **S3 public-read / public-write** — even if only transiently
+- **CreateAccessKey on a root user** — P1 page immediately
+- **Unusual `AssumeRole` from outside expected ASNs**
+- **EC2 instance profile with `*:*` policy attached** — toxic combination
+- **`PutBucketPolicy` granting `Principal: "*"`**
+- **Cross-account `share` of EBS snapshot / AMI / RDS snapshot to an unknown account**
+- **Disable of CloudTrail / GuardDuty / Config recorder** — tamper signal
+
+## Sample detection — anomalous S3 egress (mapped to T1537)
+
+```kusto
+AWSCloudTrail
+| where EventName == "PutObject"
+| extend bucket = tostring(parse_json(RequestParameters).bucketName)
+| where bucket !startswith "my-org-"
+| summarize events=count(), bytes=sum(toint(ResponseElements.bytes_transferred)) by UserIdentityArn, bucket, bin(TimeGenerated, 5m)
+| where events > 50 or bytes > 500000000
+```
+
+## Outcome
+
+Every new AWS account is born with GuardDuty on, CloudTrail exported, Config recording, and 20+ analytics mapped to Cloud ATT&CK live the same day. The "we forgot to turn on logging" class of findings simply stops existing.

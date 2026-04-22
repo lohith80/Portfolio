@@ -1,0 +1,18 @@
+name = "visitor-counter"
+main = "src/index.ts"
+compatibility_date = "2024-11-01"
+workers_dev = true
+
+# Bind the KV namespace. Replace `id` after running `wrangler kv namespace create VISITOR_COUNTER`.
+[[kv_namespaces]]
+binding = "COUNTER"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+[vars]
+# Comma-separated list of allowed origins. Use "*" during local dev.
+ALLOWED_ORIGINS = "https://indulohithnarisetty.com,https://*.pages.dev"
+
+# Optional: expose a stable subdomain under your zone.
+# [[routes]]
+# pattern = "visitors.indulohithnarisetty.com/*"
+# zone_name = "indulohithnarisetty.com"

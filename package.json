@@ -1,0 +1,42 @@
+{
+  "name": "indulohith-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Indu Lohith Narisetty — Senior Security Operations Engineer portfolio",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "export": "next build"
+  },
+  "dependencies": {
+    "next": "14.2.15",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "framer-motion": "11.11.9",
+    "@next/mdx": "14.2.15",
+    "@mdx-js/loader": "3.1.0",
+    "@mdx-js/react": "3.1.0",
+    "gray-matter": "4.0.3",
+    "next-mdx-remote": "5.0.0",
+    "clsx": "2.1.1",
+    "tailwind-merge": "2.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "22.7.7",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@types/mdx": "2.0.13",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.47",
+    "tailwindcss": "3.4.14",
+    "typescript": "5.6.3",
+    "eslint": "8.57.1",
+    "eslint-config-next": "14.2.15"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}

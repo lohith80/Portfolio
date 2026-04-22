@@ -1,0 +1,43 @@
+---
+slug: phishing-triage-playbook
+title: Phishing Triage Playbook
+tagline: The IR flow behind the Triage-This-Alert simulator on this site
+---
+
+## Premise
+
+Phishing is the first step in more than half of intrusions I have worked. A playbook that cuts the first 15 minutes of triage to a procedure — and the next 2 hours to a set of decisions with named owners — is worth more than another detection rule.
+
+## The flow
+
+```text
+URL click event
+  │
+  ├─▶ Was the URL verdicted malicious?        no  ─▶ false-positive close, tune
+  │        │ yes
+  │
+  ├─▶ Did the recipient auth from the click IP in 30m?   no ─▶ user awareness note, close
+  │        │ yes
+  │
+  ├─▶ Revoke sessions · force MFA re-enroll · disable legacy auth
+  │
+  ├─▶ Scope: any other user auth from same IP/ASN in 24h?
+  │
+  ├─▶ Inbox-rule sweep for the user + any other scoped users
+  │
+  ├─▶ Mailbox audit logs for the window — forwarded / deleted / read
+  │
+  ├─▶ Post-incident report · detections shipped · controls tightened
+  │
+  └─▶ Run the whole flow as a tabletop exercise the following quarter
+```
+
+## Why the `Triage This Alert` simulator on this site uses this playbook
+
+Because it is the actual flow. Click through `/triage` and each decision reflects a real call I have made. The Splunk SPL and Sentinel KQL on each step are the queries, not props.
+
+## Outcome
+
+- Mean triage-time reduced to under 15 minutes.
+- User click-rate dropped 27% after paired awareness training with detection feedback loops.
+- Replayed as a quarterly tabletop — every SOC analyst on the team has walked the whole flow.

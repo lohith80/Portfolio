@@ -1,0 +1,49 @@
+---
+slug: soar-enrichment-pipeline
+title: SOAR Enrichment Pipeline
+tagline: Python microservice that triples L1 triage throughput
+---
+
+## The problem
+
+Every Sentinel alert hitting the SOC queue started the same way: an analyst copy-pasting IPs, domains, and file hashes into VirusTotal, AbuseIPDB, and the internal CMDB — one at a time. Across 80+ daily alerts that is three hours of analyst time per day, before a single decision gets made.
+
+## The fix
+
+A webhook-driven enrichment service, written in Python, that fires the moment a Sentinel analytic rule produces an incident. By the time the analyst opens the alert in the console, context is already posted back — in the alert comments, in Slack, and back into the Sentinel incident entity.
+
+## Architecture
+
+```text
+Sentinel (Logic App trigger)
+      │
+      ▼  webhook (signed)
+┌─────────────────────┐
+│  enrichment service │  FastAPI, async
+│                     │
+│  ┌── VirusTotal     │
+│  ├── AbuseIPDB      │
+│  ├── CMDB (asset)   │
+│  └── MISP           │
+└─────────┬───────────┘
+          ▼
+  Sentinel entities ← + Slack (#soc-triage) ← + ServiceNow ticket
+```
+
+## What gets enriched
+
+- **IPs** — reputation score, ASN, geoloc, prior incidents
+- **Domains / URLs** — VT community score, age, parked/live
+- **File hashes** — VT positives, first-seen, sandbox verdict
+- **Users** — manager, department, last-known location, MFA status
+- **Hosts** — asset owner, criticality, business function, last-seen
+
+## The outcome bullet I actually measured
+
+> Eliminated ~3 hours/day of L1 analyst manual lookup. Mean triage-time-per-alert dropped 30%.
+
+## What I would do differently next time
+
+- Rate-limit VirusTotal calls more aggressively — the free tier is unforgiving under spike load.
+- Cache reputation for 1 hour per indicator — most alerts in a burst share the same IPs.
+- Sign the webhook (HMAC over body) instead of trusting the Sentinel → Logic App shared secret.

@@ -1,0 +1,58 @@
+---
+slug: jsecpy
+title: JSecPy
+tagline: Python static-analysis toolkit for OWASP Top 10 detection
+---
+
+## Why it exists
+
+Most off-the-shelf SAST tools treat every finding the same. A `eval(request.args)` is not a "coding style" comment. JSecPy was built to surface the small set of patterns that *actually* map to exploitable OWASP Top 10 categories — and to output those findings in formats detection engineers already consume (Sigma + SARIF).
+
+## What it does
+
+- Walks Python / JS ASTs looking for concrete sink patterns: `eval`, `exec`, `Function()`, unparameterised `cursor.execute`, raw-string SQL, HTML sinks hit by `request.*`, missing auth decorators, weak crypto primitives, hardcoded secrets.
+- Maps each finding to an OWASP category (A01–A10) and a MITRE ATT&CK technique where applicable (T1059 Command Execution, T1190 Exploit Public-Facing Application).
+- Emits **Sigma** for SIEM teams and **SARIF** for GitHub Code Scanning.
+- Integrates as a pre-merge gate — exits non-zero on critical/high.
+
+## Pipeline
+
+```text
+source tree
+  └─▶ AST parse (ast / @babel/parser)
+        └─▶ sink matcher
+              ├─▶ OWASP category
+              ├─▶ ATT&CK mapping
+              └─▶ confidence scoring
+                    └─▶ SARIF  (GitHub Code Scanning UI)
+                    └─▶ Sigma  (SIEM pipeline / detection-as-code repo)
+```
+
+## Sample output — Python raw-SQL sink
+
+```json
+{
+  "ruleId": "jsecpy.python.sql-raw",
+  "level": "error",
+  "message": "String-concatenated SQL passed to cursor.execute() — OWASP A03 Injection",
+  "locations": [{ "file": "app/views.py", "line": 147 }],
+  "properties": {
+    "owasp": "A03:2021",
+    "attack": "T1190",
+    "confidence": "high",
+    "remediation": "Use parameterised queries. Example: cursor.execute(SQL, (value,))"
+  }
+}
+```
+
+## What I learned building it
+
+- AST walks beat regex in 90% of cases — fewer false positives, much better source-location accuracy.
+- Shipping findings as **Sigma** means detection engineers can validate in a live SIEM before the patch ships. Nobody trusts SAST until it has closed the loop with runtime telemetry.
+- A "confidence" score is the difference between an adopted tool and one that gets muted.
+
+## Roadmap
+
+- Taint propagation for deeper sink-to-source paths
+- TypeScript grammar coverage
+- Policy-as-code integration (OPA / Rego)
