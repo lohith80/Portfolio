@@ -9,8 +9,8 @@
       <stop offset="100%" stop-color="#5ef2ff" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glow2" cx="100%" cy="100%" r="60%">
-      <stop offset="0%" stop-color="#ff3db1" stop-opacity="0.12"/>
-      <stop offset="100%" stop-color="#ff3db1" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#ff3344" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#ff3344" stop-opacity="0"/>
     </radialGradient>
     <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse">
       <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#5ef2ff" stroke-opacity="0.06" stroke-width="1"/>
@@ -26,18 +26,18 @@
     <circle cx="56" cy="48" r="6" fill="#ff2e63"/>
     <circle cx="78" cy="48" r="6" fill="#ffb94a"/>
     <circle cx="100" cy="48" r="6" fill="#5ef2ff"/>
-    <text x="140" y="54" fill="#8895a8" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="16" letter-spacing="4">INDULOHITH@SECOPS — ZSH</text>
+    <text x="140" y="54" fill="#8895a8" font-family="'JetBrains Mono', 'SF Mono', monospace" font-size="16" letter-spacing="4">INDUNARISETTY@SECOPS — ZSH</text>
   </g>
 
   <!-- Main -->
   <g font-family="'JetBrains Mono', 'SF Mono', monospace">
-    <text x="56" y="150" fill="#ff3db1" font-size="28">$</text>
+    <text x="56" y="150" fill="#ff3344" font-size="28">$</text>
     <text x="92" y="150" fill="#d6e1ea" font-size="28">whoami --one-line</text>
 
-    <text x="56" y="230" fill="#5ef2ff" font-size="72" font-weight="700">Indu Lohith</text>
+    <text x="56" y="230" fill="#5ef2ff" font-size="72" font-weight="700">Indu</text>
     <text x="56" y="310" fill="#5ef2ff" font-size="72" font-weight="700">Narisetty</text>
 
-    <text x="56" y="380" fill="#ff3db1" font-size="30" font-weight="600">Senior Security Operations Engineer</text>
+    <text x="56" y="380" fill="#ff3344" font-size="30" font-weight="600">Senior Security Operations Engineer</text>
 
     <text x="56" y="440" fill="#d6e1ea" font-size="22">I build high-fidelity SIEM detections, lead IR,</text>
     <text x="56" y="472" fill="#d6e1ea" font-size="22">and automate SOC workflows.</text>
@@ -53,8 +53,8 @@
         <text x="16" y="24" fill="#5ef2ff">Sentinel KQL</text>
       </g>
       <g transform="translate(464,520)">
-        <rect x="0" y="0" width="160" height="36" rx="4" fill="#0a0b12" stroke="#ff3db1" stroke-opacity="0.5"/>
-        <text x="16" y="24" fill="#ff3db1">MITRE ATT&amp;CK</text>
+        <rect x="0" y="0" width="160" height="36" rx="4" fill="#0a0b12" stroke="#ff3344" stroke-opacity="0.5"/>
+        <text x="16" y="24" fill="#ff3344">MITRE ATT&amp;CK</text>
       </g>
       <g transform="translate(638,520)">
         <rect x="0" y="0" width="150" height="36" rx="4" fill="#0a0b12" stroke="#ffb94a" stroke-opacity="0.5"/>
