@@ -20,7 +20,7 @@ const nextConfig = {
   env: {
     NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL || 'https://indulohithnarisetty.com',
     NEXT_PUBLIC_COUNTER_URL:
-      process.env.NEXT_PUBLIC_COUNTER_URL || 'https://visitor-counter.indulohithnarisetty.workers.dev',
+      process.env.NEXT_PUBLIC_COUNTER_URL || 'https://visitor-counter.lohithchowdary80.workers.dev',
     NEXT_PUBLIC_CAL_USERNAME: process.env.NEXT_PUBLIC_CAL_USERNAME || 'indulohithnarisetty',
   },
   webpack: (config, { dev, isServer, webpack }) => {

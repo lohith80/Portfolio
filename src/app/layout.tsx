@@ -80,8 +80,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         {/* Preconnect to third-party origins used on page load: visitor-counter worker + Cal.com embed.
             next/font/google already handles fonts.gstatic.com preconnect automatically. */}
-        <link rel="preconnect" href="https://visitor-counter.indulohithnarisetty.workers.dev" crossOrigin="anonymous" />
-        <link rel="dns-prefetch" href="https://visitor-counter.indulohithnarisetty.workers.dev" />
+        <link rel="preconnect" href="https://visitor-counter.lohithchowdary80.workers.dev" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://visitor-counter.lohithchowdary80.workers.dev" />
         <link rel="preconnect" href="https://cal.com" />
         <link rel="dns-prefetch" href="https://cal.com" />
         <link rel="dns-prefetch" href="https://app.cal.com" />
