@@ -46,10 +46,10 @@
       "not dead",
       "not op_mini all",
       "not ie 11",
-      "Chrome >= 90",
+      "Chrome >= 92",
       "Firefox >= 90",
-      "Safari >= 14",
-      "Edge >= 90"
+      "Safari >= 15.4",
+      "Edge >= 92"
     ],
     "development": [
       "last 1 chrome version",

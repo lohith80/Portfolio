@@ -103,7 +103,7 @@ export function TtyNav() {
         <Link
           href="/"
           className="group flex shrink-0 items-center gap-1 text-phos no-underline"
-          aria-label="home"
+          aria-label={`${profile.handle}@${profile.host} — home`}
         >
           <span className="inline-block h-2 w-2 rounded-full bg-phos shadow-[0_0_8px_rgba(94,242,255,0.8)] group-hover:bg-white" aria-hidden />
           <span className="tracking-[0.22em] text-magenta">{profile.handle}</span>
