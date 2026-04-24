@@ -125,12 +125,6 @@ export default function ProjectsPage() {
         </pre>
       </div>
 
-      <footer className="mt-6 border-t border-phos/15 pt-4 text-[12px] text-slate-500">
-        <span className="text-magenta">#</span> add one → edit{' '}
-        <code className="border border-phos/20 bg-ink-900 px-1 text-phos">content/projects.ts</code>{' '}
-        + create{' '}
-        <code className="border border-phos/20 bg-ink-900 px-1 text-phos">content/projects/&lt;slug&gt;.mdx</code>
-      </footer>
     </div>
   );
 }

@@ -89,10 +89,6 @@ export default function SkillsPage() {
         ))}
       </div>
 
-      <footer className="mt-6 border-t border-phos/15 pt-4 text-[12px] text-slate-500">
-        <span className="text-magenta">#</span> add / re-rank → edit{' '}
-        <code className="border border-phos/20 bg-ink-900 px-1 text-phos">content/skills.ts</code>
-      </footer>
     </div>
   );
 }

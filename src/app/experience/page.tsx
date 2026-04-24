@@ -130,10 +130,6 @@ export default function ExperiencePage() {
         </div>
       </section>
 
-      <footer className="mt-8 border-t border-phos/15 pt-4 text-[12px] text-slate-500">
-        <span className="text-magenta">#</span> new role? → edit{' '}
-        <code className="border border-phos/20 bg-ink-900 px-1 text-phos">content/experience.ts</code>
-      </footer>
     </div>
   );
 }

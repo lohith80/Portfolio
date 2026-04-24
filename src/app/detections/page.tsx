@@ -138,11 +138,6 @@ export default function DetectionsPage() {
         ))}
       </section>
 
-      <footer className="mt-10 border-t border-phos/15 pt-4 text-[12px] text-slate-500">
-        <span className="text-magenta">#</span> new detection? → edit{' '}
-        <code className="border border-phos/20 bg-ink-900 px-1 text-phos">content/detections.ts</code>{' '}
-        → <code className="text-phos">git push</code>. live in ~45s.
-      </footer>
     </div>
   );
 }
