@@ -208,11 +208,13 @@ function TechCell({ tech, onClick, compact }: { tech: Technique; onClick: () => 
     >
       <div className="flex items-center gap-2">
         <span className="font-mono text-tiny">{tech.id}</span>
-        <span className={cn('ml-auto inline-block h-1.5 w-6 rounded-sm', meta.bar)} />
+        {/* Tick + tooling inherit the cell's own text color (cream on solid ink cells,
+            dark ink on the kraft 'aware' cell) instead of hardcoding cream. */}
+        <span className="ml-auto inline-block h-1.5 w-6 rounded-sm bg-current opacity-50" />
       </div>
       <div className={cn('mt-0.5 truncate font-mono', compact ? 'text-xs' : 'text-sm')}>{tech.name}</div>
       {!compact ? (
-        <div className="mt-1 truncate text-tiny text-ink-950/80">{tech.tooling.slice(0, 2).join(' · ')}</div>
+        <div className="mt-1 truncate text-tiny opacity-80">{tech.tooling.slice(0, 2).join(' · ')}</div>
       ) : null}
     </button>
   );

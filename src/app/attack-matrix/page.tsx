@@ -19,8 +19,8 @@ export default function AttackMatrixPage() {
         />
         <p className="mt-3 max-w-3xl text-[13px] text-slate-400">
           <span className="text-slate-500">{'// '}</span>
-          Green = deployed detection. Amber = active hunt. Magenta = investigated during IR.
-          Slate = not yet covered (honest).
+          Blue = deployed detection. Red = active hunt. Ochre = investigated during IR.
+          Kraft = familiar, not yet covered (honest).
         </p>
       </header>
       <AttackMatrix />

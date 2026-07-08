@@ -54,11 +54,11 @@ export function StatusBar() {
   return (
     <div
       aria-label="Status bar"
-      className="fixed bottom-0 left-0 right-0 z-40 border-t border-phos/25 bg-[var(--bg-crt)]/95 backdrop-blur-sm"
+      className="fixed bottom-0 left-0 right-0 z-40 border-t border-[var(--edge)] bg-[var(--paper-2)]"
     >
       <div className="wrap-wide flex h-7 items-center gap-3 overflow-x-auto font-mono text-[11px] uppercase tracking-[0.14em] no-scrollbar">
         <span className="flex shrink-0 items-center gap-1 text-phos">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-phos shadow-[0_0_6px_rgba(94,242,255,0.8)]" aria-hidden />
+          <span className="inline-block h-1.5 w-1.5 bg-magenta" aria-hidden />
           <span className="text-phos/90">{profile.handle}@{profile.host}</span>
           <span className="text-slate-500">:</span>
           <span className="text-slate-300">{pwd}</span>
@@ -83,14 +83,14 @@ export function StatusBar() {
           <span className="text-slate-700 hidden sm:inline">·</span>
           <Link
             href="/book"
-            className="hidden text-magenta hover:text-white sm:inline"
+            className="hidden text-magenta hover:text-slate-100 sm:inline"
           >
             [book]
           </Link>
           <Link
             href="/resume.pdf"
             prefetch={false}
-            className="text-phos hover:text-white"
+            className="text-phos hover:text-slate-100"
           >
             [cv]
           </Link>

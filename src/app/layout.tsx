@@ -1,25 +1,30 @@
 import type { Metadata, Viewport } from 'next';
-import { JetBrains_Mono, IBM_Plex_Mono, Inter } from 'next/font/google';
+import { Courier_Prime, Stardos_Stencil, Caveat } from 'next/font/google';
 import './globals.css';
 import { BootSequence } from '@/components/BootSequence';
 import { TtyNav } from '@/components/TtyNav';
 import { StatusBar } from '@/components/StatusBar';
 import { profile } from '@content/profile';
 
-const jetbrains = JetBrains_Mono({
+// Typewriter body — every transcript, table, and report line.
+const courier = Courier_Prime({
   subsets: ['latin'],
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-mono',
 });
 
-const plex = IBM_Plex_Mono({
+// Stencil display — rubber stamps and dossier headings.
+const stencil = Stardos_Stencil({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['400', '700'],
   display: 'swap',
   variable: '--font-display',
 });
 
-const inter = Inter({
+// Handwritten margin notes.
+const caveat = Caveat({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-sans',
@@ -68,7 +73,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#04050a',
+  themeColor: '#e8dcbe',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
@@ -76,7 +81,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${jetbrains.variable} ${plex.variable} ${inter.variable}`}>
+    <html lang="en" suppressHydrationWarning className={`${courier.variable} ${stencil.variable} ${caveat.variable}`}>
       <head>
         {/* Preconnect to third-party origins used on page load: visitor-counter worker + Cal.com embed.
             next/font/google already handles fonts.gstatic.com preconnect automatically. */}
@@ -94,10 +99,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           Skip to content
         </a>
 
-        {/* Global CRT layers */}
+        {/* Global paper layers: aged-edge vignette + fiber grain */}
         <div aria-hidden className="vignette-global" />
         <div aria-hidden className="scanline-global" />
-        <div aria-hidden className="scanbar-global" />
 
         <BootSequence>
           <TtyNav />

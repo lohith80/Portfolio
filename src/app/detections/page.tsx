@@ -119,7 +119,7 @@ export default function DetectionsPage() {
 
               {/* ops notes */}
               {d.notes && d.notes.length > 0 && (
-                <div className="border border-phos/15 bg-ink-950/60 p-3 text-[12px] text-slate-300">
+                <div className="border border-phos/15 bg-ink-800/60 p-3 text-[12px] text-slate-300">
                   <p className="mb-2 text-[10px] uppercase tracking-[0.22em] text-phos/70">
                     # ops notes
                   </p>

@@ -66,14 +66,14 @@ export function TriageSimulator() {
           const state = picked[s.id];
           const color =
             state === 'correct'
-              ? 'bg-phos/60 border-phos'
+              ? 'bg-phos border-phos-700'
               : state === 'plausible'
-              ? 'bg-amber-400/50 border-amber-400'
+              ? 'bg-amber-400 border-amber-500'
               : state === 'wrong'
-              ? 'bg-sev-crit/60 border-sev-crit'
+              ? 'bg-sev-crit border-magenta-700'
               : 'bg-ink-700 border-ink-600';
-          // Use light text on the dark unpicked bg (ink-700) so contrast passes WCAG AA;
-          // keep the dark ink-950 text on the bright picked pills (phos/amber/crit) where it has contrast.
+          // Picked pills are solid stamp ink → cream (ink-950) text passes WCAG;
+          // unpicked kraft (ink-700) gets dark ink text.
           const textColor = state ? 'text-ink-950' : 'text-slate-100';
           return (
             <button

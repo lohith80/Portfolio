@@ -26,7 +26,7 @@ export const profile = {
   email: 'indulohithnarisetty@gmail.com',
   phone: '+1 551 339 8748',
   linkedin: 'https://www.linkedin.com/in/indu-lohith-narisetty/',
-  github: 'https://github.com/indulohithnarisetty',
+  github: 'https://github.com/lohith80',
   resumeUrl: '/resume.pdf',
   yearsExperience: 4,
 

@@ -4,7 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import { profile } from '@content/profile';
 
 /**
- * BootSequence — full-viewport POST-style boot shown on first visit.
+ * BootSequence — records-room retrieval slip shown on first visit.
+ * The dossier is located, its exhibits attached, the redaction pass run,
+ * and the release stamp comes down before the file opens.
  * - localStorage: `tty.booted=1` suppresses subsequent loads until cleared.
  * - `?boot=1` query forces a replay.
  * - Any keypress / click skips immediately.
@@ -17,32 +19,29 @@ type BootLine =
   | { kind: 'info'; text: string }
   | { kind: 'blank' }
   | { kind: 'banner'; text: string }
+  | { kind: 'stamp'; text: string }
   | { kind: 'raw'; text: string };
 
 const SCRIPT: BootLine[] = [
-  { kind: 'info', text: 'BIOS v6.02  |  phosphor-tube CRT emulator  |  boot sector @ 0xFFF0' },
-  { kind: 'info', text: 'checking memory ................................ 640K OK' },
+  { kind: 'info', text: 'RECORDS DIVISION — dossier retrieval terminal rev 6.02' },
+  { kind: 'info', text: 'request ........................................ RD-0706 (public reading room)' },
   { kind: 'blank' },
-  { kind: 'ok',   label: 'mount /dev/sda1 → /',                detail: '[rw, crt, cozy]' },
-  { kind: 'ok',   label: 'net.ifup eth0',                      detail: '10.13.37.42/24 · mtu 9000' },
-  { kind: 'ok',   label: 'systemd-resolved',                   detail: 'dns=1.1.1.1, dot=yes' },
-  { kind: 'ok',   label: 'load module: mitre_attack (v15.1)',  detail: '14 tactics · 625 techniques' },
-  { kind: 'ok',   label: 'load module: splunk_spl',            detail: 'search head online' },
-  { kind: 'ok',   label: 'load module: sentinel_kql',          detail: 'workspace OK, 30d retention' },
-  { kind: 'ok',   label: 'load module: sigma_cli',             detail: '620 rules compiled' },
-  { kind: 'ok',   label: 'load module: crowdstrike_falcon',    detail: 'stream connected' },
-  { kind: 'ok',   label: 'load module: aws_guardduty',         detail: '14 accounts · 3 regions' },
-  { kind: 'ok',   label: 'load module: soar_runbooks',         detail: '37 playbooks registered' },
-  { kind: 'warn', label: 'caffeine buffer',                    detail: 'low → replenish advised' },
+  { kind: 'ok',   label: 'locate dossier: NARISETTY, INDU LOHITH', detail: '[cabinet 04 · drawer B · folder 07]' },
+  { kind: 'ok',   label: 'verify chain of custody',                detail: 'unbroken · 9 transfers' },
+  { kind: 'ok',   label: 'attach exhibit: detections',             detail: 'production SPL · KQL · Sigma' },
+  { kind: 'ok',   label: 'attach exhibit: attack coverage',        detail: '14 tactics · heatmap enclosed' },
+  { kind: 'ok',   label: 'attach exhibit: projects',               detail: '8 case studies' },
+  { kind: 'ok',   label: 'attach exhibit: service record',         detail: '4 years · commit log' },
+  { kind: 'ok',   label: 'attach exhibit: triage exercise',        detail: 'live-fire · 5 decision points' },
+  { kind: 'ok',   label: 'redaction review',                       detail: '0 sections withheld' },
+  { kind: 'warn', label: 'coffee ring on page 3',                  detail: 'noted · ignored' },
   { kind: 'blank' },
-  { kind: 'info', text: 'starting service: detection-engineering.daemon' },
-  { kind: 'info', text: 'starting service: incident-response.listener  @ 24/7' },
-  { kind: 'info', text: 'starting service: threat-hunting.cron         @ weekly' },
+  { kind: 'info', text: 'routing: RECORDS → REVIEW → RELEASE ........... complete' },
+  { kind: 'stamp', text: 'Approved for Public Release' },
   { kind: 'blank' },
   { kind: 'banner', text: profile.asciiBanner.trim() },
   { kind: 'blank' },
-  { kind: 'info', text: `welcome, ${profile.name.toLowerCase()} — session id ${Math.random().toString(16).slice(2, 10)}` },
-  { kind: 'info', text: `type \`help\` or hit any key to enter` },
+  { kind: 'info', text: 'dossier open — press any key to read' },
 ];
 
 const prefersReducedMotion = () =>
@@ -95,6 +94,7 @@ export function BootSequence({ children }: { children: React.ReactNode }) {
       const delay =
         line.kind === 'banner' ? 120 :
         line.kind === 'blank'  ? 40  :
+        line.kind === 'stamp'  ? 520 :
         line.kind === 'warn'   ? 200 : 70;
       setTimeout(tick, delay + Math.random() * 40);
     };
@@ -139,8 +139,8 @@ export function BootSequence({ children }: { children: React.ReactNode }) {
       <div className="mx-auto max-w-[1100px] px-4 py-6 font-mono text-[12.5px] leading-[1.55] sm:px-8 sm:text-[13px]">
         <header className="mb-4 flex items-center justify-between border-b border-phos/20 pb-2 text-[11px] uppercase tracking-[0.22em] text-slate-500">
           <span className="flex items-center gap-2">
-            <span className="inline-block h-2 w-2 animate-pulse rounded-full bg-phos" aria-hidden />
-            tty1 — cold boot
+            <span className="inline-block h-2 w-2 animate-pulse bg-magenta" aria-hidden />
+            records room — declassification in progress
           </span>
           <button
             type="button"
@@ -192,6 +192,12 @@ function renderLine(l: BootLine, i: number) {
       return (
         <div key={key} className="my-2">
           <span className="ascii block">{l.text}</span>
+        </div>
+      );
+    case 'stamp':
+      return (
+        <div key={key} className="my-3 pl-2">
+          <span className="stamp stamp-lg animate-stampIn">{l.text}</span>
         </div>
       );
     case 'raw':

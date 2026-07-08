@@ -19,7 +19,8 @@ export default function NotFound() {
           <span className="text-slate-500">$ </span><span className="text-phos">dmesg | tail -n 3</span>{'\n'}
           <span className="text-amber-300">[ERR  ]</span> <span className="text-slate-300">HTTP 404 · path not in routing table</span>{'\n'}
           <span className="text-amber-300">[ERR  ]</span> <span className="text-slate-300">no detection fired — just a bad URL</span>{'\n'}
-          <span className="text-phos">[HINT ]</span> <span className="text-slate-300">try one of the destinations below</span>{'\n\n'}
+          <span className="text-phos">[HINT ]</span> <span className="text-slate-300">try one of the destinations below</span>{'\n'}
+          <span className="annot pl-10">wrong drawer — nothing filed here ↓</span>{'\n'}
           <span className="ascii-sm text-magenta">{`
  ██╗  ██╗ ██████╗ ██╗  ██╗
  ██║  ██║██╔═████╗██║  ██║

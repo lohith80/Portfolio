@@ -51,7 +51,10 @@ export default function LandingPage() {
                     {'\n'}
                   </span>
                 ))}
-                {'\n'}
+                <span className="text-phos/80">{'clearance'.padEnd(12)}</span>
+                <span className="text-slate-500"> : </span>
+                <span className="redact" tabIndex={0}>need-to-know · ask nicely</span>
+                {'\n\n'}
                 <span className="text-slate-500">$ </span><span className="text-phos">uptime</span>
                 {'\n'}
                 <span className="text-slate-300">{profile.yearsExperience} years — {roles.length} roles — {projects.length} shipped projects — {detections.length}+ production detections</span>
@@ -86,6 +89,7 @@ export default function LandingPage() {
                 <span className="kbd">d</span> · <span className="kbd">g</span>{' '}
                 <span className="kbd">t</span>
               </div>
+              <p className="annot mt-2 text-[15px]">start with 4 — it&rsquo;s live-fire</p>
             </div>
           </aside>
         </div>
@@ -98,6 +102,7 @@ export default function LandingPage() {
             <PageBanner cmd="head -n 2 detections/*.yml" cwd="~" caption="two out of the deployed library" />
             <h2 id="det" className="sr-only">Featured detections</h2>
           </div>
+          <span className="annot hidden sm:inline">both still fire weekly ✓</span>
           <Link href="/detections" className="tty-link">view all {detections.length}</Link>
         </div>
 
@@ -164,6 +169,7 @@ export default function LandingPage() {
               </pre>
               <div className="mt-4 flex flex-wrap items-center gap-2">
                 <Link href="/triage" className="btn-magenta">▸ start the simulation</Link>
+                <span className="annot">← based on a real one</span>
                 <span className="chip">T1566</span>
                 <span className="chip">T1078</span>
                 <span className="chip">T1021.002</span>
@@ -286,6 +292,10 @@ UrlClickEvents
             <span className="text-slate-500"> : </span>
             <a href={`mailto:${profile.email}`} className="text-phos">{profile.email}</a>
             {'\n'}
+            <span className="text-slate-500">phone     </span>
+            <span className="text-slate-500"> : </span>
+            <span className="redact" tabIndex={0}>redacted — email first</span>
+            {'\n'}
             <span className="text-slate-500">linkedin  </span>
             <span className="text-slate-500"> : </span>
             <a href={profile.linkedin} target="_blank" rel="noopener" className="text-phos">
@@ -324,7 +334,7 @@ function QuickKey({
       <span className="kbd">{k}</span>
       <Link
         href={href}
-        className={`no-underline ${accent === 'magenta' ? 'text-magenta hover:text-white' : 'text-phos hover:text-white'}`}
+        className={`no-underline ${accent === 'magenta' ? 'text-magenta hover:text-slate-100' : 'text-phos hover:text-slate-100'}`}
       >
         <span className="text-slate-500">[</span>
         {label}

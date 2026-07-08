@@ -43,10 +43,12 @@ export const COVERAGE_META: Record<
   Coverage,
   { label: string; weight: number; colorClass: string; bar: string }
 > = {
-  detect:     { label: 'Deployed Detection',  weight: 4, colorClass: 'bg-phos/70 text-ink-950 border-phos',             bar: 'bg-phos' },
-  hunt:       { label: 'Active Hunt',          weight: 3, colorClass: 'bg-magenta/60 text-ink-950 border-magenta',       bar: 'bg-magenta' },
-  investigate:{ label: 'Investigated IR',      weight: 2, colorClass: 'bg-amber-400/50 text-ink-950 border-amber-400',   bar: 'bg-amber-400' },
-  aware:      { label: 'Familiar',             weight: 1, colorClass: 'bg-ink-600 text-slate-300 border-ink-600',         bar: 'bg-ink-600' },
+  // Full-strength "stamp ink" backgrounds: cream text on the tinted washes used
+  // previously fails WCAG on the light paper theme (2.0-3.5:1); solid ink passes (4.8-6.8:1).
+  detect:     { label: 'Deployed Detection',  weight: 4, colorClass: 'bg-phos text-ink-950 border-phos-700',           bar: 'bg-phos' },
+  hunt:       { label: 'Active Hunt',          weight: 3, colorClass: 'bg-magenta text-ink-950 border-magenta-700',     bar: 'bg-magenta' },
+  investigate:{ label: 'Investigated IR',      weight: 2, colorClass: 'bg-amber-400 text-ink-950 border-amber-500',     bar: 'bg-amber-400' },
+  aware:      { label: 'Familiar',             weight: 1, colorClass: 'bg-ink-600 text-slate-300 border-ink-600',       bar: 'bg-ink-600' },
 };
 
 export const techniques: Technique[] = [

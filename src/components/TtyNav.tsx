@@ -95,17 +95,20 @@ export function TtyNav() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-30 border-b border-phos/25 transition-colors',
-        scrolled ? 'bg-[var(--bg-crt)]/95 backdrop-blur-sm' : 'bg-[var(--bg-crt)]/80',
+        'sticky top-0 z-30 border-b border-[var(--edge)] bg-[var(--paper)] transition-shadow',
+        scrolled && 'shadow-[0_10px_20px_-14px_rgba(60,48,26,0.5)]',
       )}
     >
+      <p className="classification-band select-none" aria-hidden>
+        declassified&ensp;·&ensp;personnel file&ensp;·&ensp;approved for public release
+      </p>
       <div className="wrap-wide flex items-center gap-3 overflow-x-auto px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.16em] no-scrollbar sm:py-2 sm:text-[12px]">
         <Link
           href="/"
           className="group flex shrink-0 items-center gap-1 text-phos no-underline"
           aria-label={`${profile.handle}@${profile.host} — home`}
         >
-          <span className="inline-block h-2 w-2 rounded-full bg-phos shadow-[0_0_8px_rgba(94,242,255,0.8)] group-hover:bg-white" aria-hidden />
+          <span className="inline-block h-2 w-2 bg-magenta transition-colors group-hover:bg-phos" aria-hidden />
           <span className="tracking-[0.22em] text-magenta">{profile.handle}</span>
           <span className="text-slate-500">@</span>
           <span className="tracking-[0.22em] text-phos">{profile.host}</span>

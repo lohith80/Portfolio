@@ -64,7 +64,7 @@ export function CodeBlock({ lang, title, code, note, className, copyable = true 
         <code>{code}</code>
       </pre>
       {note && (
-        <div className="border-t border-phos/15 bg-ink-950/60 px-3 py-1.5 text-[11px] text-slate-500">
+        <div className="border-t border-phos/15 bg-ink-800/60 px-3 py-1.5 text-[11px] text-slate-500">
           <span className="text-magenta">#</span> {note}
         </div>
       )}

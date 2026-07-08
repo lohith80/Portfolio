@@ -20,7 +20,12 @@ const ACCENT_CLASS: Record<NonNullable<AsciiBannerProps['accent']>, string> = {
 export function AsciiBanner({ compact, subtitle, className, accent = 'phos' }: AsciiBannerProps) {
   const text = compact ? profile.asciiBannerSmall : profile.asciiBanner;
   return (
-    <div className={cn('select-none overflow-x-auto no-scrollbar', className)} aria-hidden>
+    <div className={cn('relative select-none overflow-x-auto no-scrollbar', className)} aria-hidden>
+      {!compact && (
+        <span className="stamp stamp-lg absolute right-3 top-1 z-10 hidden rotate-[-8deg] sm:inline-block">
+          approved for release
+        </span>
+      )}
       <pre className={cn('ascii', ACCENT_CLASS[accent])}>{text}</pre>
       {subtitle && (
         <p className="mt-2 text-[11px] uppercase tracking-[0.25em] text-slate-500">

@@ -28,11 +28,11 @@ export function CalEmbed({ slug = '15min' }: { slug?: '15min' | '30min' }) {
         elementOrSelector: '#cal-inline',
         calLink: `${CAL_USERNAME}/${slug}`,
         layout: 'month_view',
-        config: { theme: 'dark' },
+        config: { theme: 'light' },
       });
       window.Cal('ui', {
-        theme: 'dark',
-        styles: { branding: { brandColor: '#5ef2ff' } },
+        theme: 'light',
+        styles: { branding: { brandColor: '#a4232b' } },
         hideEventTypeDetails: false,
         layout: 'month_view',
       });
