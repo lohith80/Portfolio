@@ -16,7 +16,7 @@ export const profile = {
     ['stack',       'Splunk SPL · Sentinel KQL · Sigma · Falcon · Defender · AWS'],
     ['focus',       'detection-as-code · SOAR · purple-team · cloud IR · AI/LLM security'],
     ['frameworks',  'MITRE ATT&CK · ATLAS · D3FEND · NIST 800-61'],
-    ['location',    'US East'],
+    ['location',    'Frisco, TX (US)'],
     ['shell',       '/bin/zsh'],
     ['editor',      'vim'],
   ] as const satisfies readonly (readonly [string, string])[],

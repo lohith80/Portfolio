@@ -43,7 +43,14 @@ export const metadata: Metadata = {
   authors: [{ name: profile.name, url: profile.linkedin }],
   keywords: [
     'AI Detection Engineering',
+    'Detection Engineer',
     'Detection Engineering',
+    'Detection as Code',
+    'Security Operations',
+    'SOC Analyst',
+    'Threat Hunting',
+    'Threat Detection',
+    'SIEM',
     'AI Security',
     'LLM Security',
     'MITRE ATLAS',
@@ -83,10 +90,51 @@ export const viewport: Viewport = {
   maximumScale: 5,
 };
 
+// Person structured data — lets search engines surface a rich result when a
+// recruiter searches the name, cross-linking LinkedIn + GitHub via sameAs.
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  url: SITE_URL,
+  image: `${SITE_URL}/og.svg`,
+  jobTitle: 'AI Detection Engineer',
+  email: `mailto:${profile.email}`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Frisco',
+    addressRegion: 'TX',
+    addressCountry: 'US',
+  },
+  sameAs: [profile.linkedin, profile.github],
+  alumniOf: [
+    { '@type': 'CollegeOrUniversity', name: 'University of Maryland, College Park' },
+    { '@type': 'CollegeOrUniversity', name: 'Anna University' },
+  ],
+  knowsAbout: [
+    'Detection Engineering',
+    'Security Operations (SOC)',
+    'Incident Response',
+    'SIEM — Splunk & Microsoft Sentinel',
+    'Detection-as-Code (SPL, KQL, Sigma)',
+    'Threat Hunting',
+    'MITRE ATT&CK',
+    'AI/LLM Security',
+    'MITRE ATLAS',
+    'EDR — CrowdStrike Falcon & Microsoft Defender',
+    'Cloud Security (AWS)',
+  ],
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning className={`${courier.variable} ${stencil.variable} ${caveat.variable}`}>
       <head>
+        {/* Person structured data (schema.org/Person) for recruiter/name search */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
         {/* Preconnect to third-party origins used on page load: visitor-counter worker + Cal.com embed.
             next/font/google already handles fonts.gstatic.com preconnect automatically. */}
         <link rel="preconnect" href="https://visitor-counter.lohithchowdary80.workers.dev" crossOrigin="anonymous" />
