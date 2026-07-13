@@ -60,7 +60,7 @@ export const roles: Role[] = [
     title: 'Cybersecurity Analyst — Application Security',
     location: 'Hyderabad, India',
     start: 'Jun 2021',
-    end: 'Dec 2023',
+    end: 'Aug 2022',
     accent: 'magenta',
     summary:
       '24x7 SOC + product security: DAST, SAST, OWASP Top 10, QRadar detection rules, CI/CD security gates.',
