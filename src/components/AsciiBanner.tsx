@@ -1,37 +1,53 @@
 import { profile } from '@content/profile';
 import { cn } from '@/lib/cn';
 
-interface AsciiBannerProps {
-  /** Use the compact single-line banner (default: false = full figlet). */
-  compact?: boolean;
-  /** Optional subtitle rendered immediately below the banner. */
-  subtitle?: string;
-  className?: string;
-  /** Accent class — `phos` | `magenta` | `amber`. Defaults to phos. */
-  accent?: 'phos' | 'magenta' | 'amber';
-}
+/**
+ * Hero nameplate — the case-file "SUBJECT" header.
+ *
+ * Replaces the old ASCII figlet (a 148-char-wide block that rendered the name
+ * illegibly and got half-covered by the release stamp). A dossier types the
+ * subject's name plainly, so we do too: large, high-contrast, unmistakable —
+ * with the stamp parked in the right margin, clear of every letter.
+ */
+export function AsciiBanner({ className }: { className?: string }) {
+  const parts = profile.name.split(' ');
+  const lead = parts.slice(0, -1).join(' '); // "Indu Lohith"
+  const last = parts[parts.length - 1];      // "Narisetty"
 
-const ACCENT_CLASS: Record<NonNullable<AsciiBannerProps['accent']>, string> = {
-  phos:    'text-phos/90 glow-text',
-  magenta: 'text-magenta glow-text-magenta',
-  amber:   'text-amber-300 glow-text-amber',
-};
-
-export function AsciiBanner({ compact, subtitle, className, accent = 'phos' }: AsciiBannerProps) {
-  const text = compact ? profile.asciiBannerSmall : profile.asciiBanner;
   return (
-    <div className={cn('relative select-none overflow-x-auto no-scrollbar', className)} aria-hidden>
-      {!compact && (
-        <span className="stamp stamp-lg absolute right-3 top-1 z-10 hidden rotate-[-8deg] sm:inline-block">
+    <div className={cn('relative', className)}>
+      {/* file-header strip */}
+      <div className="flex items-center justify-between border border-b-0 border-[var(--edge)] bg-[var(--paper-2)] px-3 py-1.5 text-[10px] uppercase tracking-[0.24em] text-slate-500">
+        <span>Records Division · Personnel File</span>
+        <span className="hidden sm:inline">File No. RD-04-B-07</span>
+      </div>
+
+      {/* subject block */}
+      <div className="relative overflow-hidden border border-[var(--edge)] bg-[var(--paper)] px-4 py-5 shadow-[inset_0_0_44px_rgba(120,96,56,0.06)] sm:px-6 sm:py-6">
+        {/* release stamp — parked in the right margin, never over the name */}
+        <span className="stamp stamp-lg absolute right-4 top-6 z-10 hidden rotate-[-8deg] lg:inline-block">
           approved for release
         </span>
-      )}
-      <pre className={cn('ascii', ACCENT_CLASS[accent])}>{text}</pre>
-      {subtitle && (
-        <p className="mt-2 text-[11px] uppercase tracking-[0.25em] text-slate-500">
-          {subtitle}
-        </p>
-      )}
+
+        <p className="text-[11px] uppercase tracking-[0.36em] text-magenta">Subject</p>
+
+        <h1
+          id="hero"
+          className="mt-1.5 font-display font-bold uppercase leading-[0.98] tracking-[0.015em] text-slate-100"
+          style={{ fontSize: 'clamp(1.85rem, 6.2vw, 3.5rem)' }}
+        >
+          <span className="whitespace-nowrap">{lead}</span>{' '}
+          <span className="whitespace-nowrap">{last}</span>
+        </h1>
+
+        <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] uppercase tracking-[0.18em] text-phos sm:text-[13px]">
+          <span>Detection Engineer</span>
+          <span className="text-slate-500" aria-hidden>·</span>
+          <span>SOC</span>
+          <span className="text-slate-500" aria-hidden>·</span>
+          <span>Incident Response</span>
+        </div>
+      </div>
     </div>
   );
 }

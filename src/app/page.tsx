@@ -26,7 +26,6 @@ export default function LandingPage() {
       {/* ────────── ASCII banner ────────── */}
       <section aria-labelledby="hero" className="mb-6">
         <AsciiBanner />
-        <h1 id="hero" className="sr-only">{profile.name} — Detection Engineer</h1>
 
         <div className="mt-4 grid gap-3 md:grid-cols-12">
           {/* whoami table */}
