@@ -13,12 +13,31 @@ export type Role = {
 
 export const roles: Role[] = [
   {
+    id: 'tricubic',
+    company: 'Tricubic Inc.',
+    title: 'Security Analyst — Application Security',
+    location: 'Frisco, TX · Hybrid',
+    start: 'Jun 2026',
+    end: 'Present',
+    accent: 'phos',
+    summary:
+      'Application security across the product portfolio — DAST, SAST, and SCA wired into CI/CD, secure code review, threat modeling, and internal pen testing of web apps and APIs.',
+    bullets: [
+      'Drive application security across the product portfolio — DAST (Burp Suite), SAST, and dependency / SCA scanning integrated into CI/CD with pre-merge security gates.',
+      'Conduct secure code reviews and threat modeling on new features; map findings to OWASP Top 10 / ASVS and partner with engineering on prioritized remediation.',
+      'Perform internal penetration tests of web applications and APIs; document reproducible exploit paths, CVSS scoring, and developer-ready remediation guidance.',
+      'Author secure-SDLC standards, dependency-scanning policies, and OWASP Top 10 training for developers; raise security maturity across product teams.',
+      'Coordinate vulnerability disclosure and patch management with engineering and infrastructure; track remediation SLAs and report posture to security leadership.',
+    ],
+    stack: ['Burp Suite', 'SAST', 'DAST', 'SCA', 'OWASP Top 10 / ASVS', 'Threat Modeling', 'CI/CD Security', 'CVSS'],
+  },
+  {
     id: 'shineteck',
     company: 'Shineteck Inc.',
-    title: 'Security Analyst — SOC / Incident Response',
+    title: 'Security Analyst — SOC / IR / SIEM / EDR',
     location: 'College Park, MD',
-    start: 'Jan 2024',
-    end: 'Present',
+    start: 'May 2023',
+    end: 'Jun 2026',
     accent: 'phos',
     summary:
       'End-to-end SOC + detection engineering: Splunk ES and Sentinel KQL, CrowdStrike + Defender, Python SOAR, purple team.',

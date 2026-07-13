@@ -23,7 +23,7 @@ export default function ExperiencePage() {
       {/* Service record — one clearly-labelled sheet per employer */}
       <div className="space-y-6">
         {roles.map((r, i) => {
-          const current = i === 0;
+          const current = r.end === 'Present';
           return (
             <article key={r.id} className="tty scroll-mt-16">
               <div className="tty-titlebar flex-wrap gap-y-1">

@@ -234,7 +234,7 @@ UrlClickEvents
             <span>{roles.length} postings</span>
           </div>
           <ul className="tty-body divide-y divide-[var(--edge-soft)]">
-            {roles.map((r, i) => (
+            {roles.map((r) => (
               <li
                 key={r.id}
                 className="flex flex-col gap-x-4 gap-y-1 py-2.5 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between"
@@ -244,7 +244,7 @@ UrlClickEvents
                     <span className="font-display text-[15px] uppercase tracking-[0.02em] text-slate-100">
                       {r.company}
                     </span>
-                    {i === 0 && <span className="chip-crit">current</span>}
+                    {r.end === 'Present' && <span className="chip-crit">current</span>}
                   </div>
                   <span className="text-[12.5px] uppercase tracking-[0.14em] text-phos">{r.title}</span>
                 </div>
