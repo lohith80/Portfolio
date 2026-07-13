@@ -6,7 +6,7 @@ export const profile = {
 
   // Technical-first. Facts, not marketing.
   oneLine:
-    'Detection engineer. SPL / KQL / Sigma / Falcon / AWS. Writes rules, chases alerts, automates triage.',
+    'Detection engineer. SPL / KQL / Sigma / Falcon / AWS, plus emerging AI/LLM security. Writes rules, chases alerts, automates triage.',
 
   // Raw whoami table — shown in boot + terminal
   whoami: [
@@ -14,8 +14,8 @@ export const profile = {
     ['role',        'Detection Engineer · SOC · IR'],
     ['experience',  '4y'],
     ['stack',       'Splunk SPL · Sentinel KQL · Sigma · Falcon · Defender · AWS'],
-    ['focus',       'detection-as-code · SOAR · purple-team · cloud IR'],
-    ['frameworks',  'MITRE ATT&CK · D3FEND · NIST 800-61 · Cyber Kill Chain'],
+    ['focus',       'detection-as-code · SOAR · purple-team · cloud IR · AI/LLM security'],
+    ['frameworks',  'MITRE ATT&CK · ATLAS · D3FEND · NIST 800-61'],
     ['location',    'US East'],
     ['shell',       '/bin/zsh'],
     ['editor',      'vim'],

@@ -47,6 +47,21 @@ export const skillGroups: SkillGroup[] = [
     ],
   },
   {
+    id: 'ai-security',
+    label: 'AI & LLM Security',
+    accent: 'magenta',
+    skills: [
+      { name: 'LLM Abuse Detection', level: 'strong', note: 'detection-as-code for GenAI misuse' },
+      { name: 'OWASP Top 10 for LLMs', level: 'working' },
+      { name: 'Prompt Injection & Jailbreak Testing', level: 'working', note: 'manual + automated red-team probes' },
+      { name: 'MITRE ATLAS TTP Mapping', level: 'working' },
+      { name: 'Securing ML / LLM Pipelines', level: 'familiar' },
+      { name: 'AI Red Teaming', level: 'familiar' },
+      { name: 'NIST AI RMF', level: 'familiar' },
+      { name: 'Data Poisoning & Model Exfiltration', level: 'familiar' },
+    ],
+  },
+  {
     id: 'edr-endpoint',
     label: 'EDR & Endpoint',
     accent: 'phos',

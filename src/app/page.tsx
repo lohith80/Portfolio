@@ -221,33 +221,39 @@ UrlClickEvents
         </div>
       </section>
 
-      {/* ────────── Experience git log ────────── */}
+      {/* ────────── Experience — service record ────────── */}
       <section aria-labelledby="xp" className="mt-10">
         <div className="mb-3 flex flex-wrap items-end justify-between gap-3">
-          <PageBanner cmd="git log --oneline --decorate career/main" caption="most recent → earliest" />
-          <Link href="/experience" className="tty-link">show --stat</Link>
+          <PageBanner cmd="cat ~/.service-record" caption="companies · roles · dates — full record on the next page" />
+          <Link href="/experience" className="tty-link">full record</Link>
         </div>
         <h2 id="xp" className="sr-only">Experience</h2>
         <div className="tty">
-          <pre className="tty-body overflow-x-auto text-[12.5px] leading-[1.7]">
+          <div className="tty-titlebar">
+            <span>service record — career/main</span>
+            <span>{roles.length} postings</span>
+          </div>
+          <ul className="tty-body divide-y divide-[var(--edge-soft)]">
             {roles.map((r, i) => (
-              <span key={r.id}>
-                <span className="text-amber-300">{`commit ${hashFor(r.id)}`}</span>
-                {i === 0 && <span className="text-phos"> (HEAD → main, current)</span>}
-                {'\n'}
-                <span className="text-slate-500">Author: </span>
-                <span className="text-slate-200">{profile.name} {'<'}{profile.email}{'>'}</span>
-                {'\n'}
-                <span className="text-slate-500">Date:   </span>
-                <span className="text-slate-200">{r.start} → {r.end}</span>
-                {'\n\n'}
-                <span className="text-slate-300">    {r.title} @ {r.company}</span>
-                {'\n'}
-                <span className="text-slate-400">    {r.summary}</span>
-                {'\n\n'}
-              </span>
+              <li
+                key={r.id}
+                className="flex flex-col gap-x-4 gap-y-1 py-2.5 first:pt-0 last:pb-0 sm:flex-row sm:items-baseline sm:justify-between"
+              >
+                <div className="min-w-0">
+                  <div className="flex flex-wrap items-baseline gap-x-2">
+                    <span className="font-display text-[15px] uppercase tracking-[0.02em] text-slate-100">
+                      {r.company}
+                    </span>
+                    {i === 0 && <span className="chip-crit">current</span>}
+                  </div>
+                  <span className="text-[12.5px] uppercase tracking-[0.14em] text-phos">{r.title}</span>
+                </div>
+                <span className="shrink-0 text-[12px] uppercase tracking-[0.14em] text-slate-500 tnum">
+                  {r.start} — {r.end}
+                </span>
+              </li>
             ))}
-          </pre>
+          </ul>
         </div>
       </section>
 
@@ -361,11 +367,4 @@ function LsLine({ slug, title, tagline, status }: { slug: string; title: string;
       {'\n'}
     </>
   );
-}
-
-function hashFor(id: string): string {
-  // deterministic pseudo-hash for commit-log aesthetic
-  let h = 0;
-  for (let i = 0; i < id.length; i++) h = (h * 31 + id.charCodeAt(i)) >>> 0;
-  return h.toString(16).padStart(7, '0').slice(0, 7);
 }

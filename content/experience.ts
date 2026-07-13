@@ -31,8 +31,9 @@ export const roles: Role[] = [
       'Authored quarterly tabletop exercises (supply chain, insider threat) consumed by a 3-person SOC team.',
       'Partnered with offensive security on purple-team engagements — closed persistence and defense-evasion gaps via new Sigma rules.',
       'Integrated MISP + commercial IOC feeds into Sentinel via Logic Apps + custom Python — automated 30-day IOC sunset to prevent stale alerts.',
+      'Built detection coverage for emerging AI/SaaS abuse — monitored LLM-assisted phishing and anomalous GenAI tool usage, and reviewed the security posture of internal AI integrations against the OWASP LLM Top 10.',
     ],
-    stack: ['Splunk ES', 'Sentinel KQL', 'CrowdStrike Falcon', 'Defender', 'Python', 'SOAR', 'Sigma', 'AWS', 'MITRE ATT&CK'],
+    stack: ['Splunk ES', 'Sentinel KQL', 'CrowdStrike Falcon', 'Defender', 'Python', 'SOAR', 'Sigma', 'AWS', 'MITRE ATT&CK', 'AI/LLM Security'],
   },
   {
     id: 'intellect',
@@ -69,8 +70,9 @@ export const roles: Role[] = [
     bullets: [
       'Built JSecPy — Python static-analysis toolkit that scans open-source web projects for OWASP Top 10 injection + misconfig patterns.',
       'Contributed Sigma-format detection research; experimented with integrating rules into Splunk + Elastic for validation.',
+      'Researching AI/LLM security — prompt-injection and jailbreak testing against local models, mapping findings to MITRE ATLAS, and prototyping detections for LLM abuse.',
       'Maintain a personal detection-engineering lab (AWS + Sentinel trial + Splunk Free) for purple-team self-study.',
     ],
-    stack: ['Python', 'Sigma', 'Splunk', 'Elastic', 'OWASP Top 10', 'AWS'],
+    stack: ['Python', 'Sigma', 'Splunk', 'Elastic', 'OWASP Top 10', 'AWS', 'MITRE ATLAS'],
   },
 ];
