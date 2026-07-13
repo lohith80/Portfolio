@@ -31,7 +31,7 @@ const SCRIPT: BootLine[] = [
   { kind: 'ok',   label: 'attach exhibit: detections',             detail: 'production SPL · KQL · Sigma' },
   { kind: 'ok',   label: 'attach exhibit: attack coverage',        detail: '14 tactics · heatmap enclosed' },
   { kind: 'ok',   label: 'attach exhibit: projects',               detail: '8 case studies' },
-  { kind: 'ok',   label: 'attach exhibit: service record',         detail: '4 years · commit log' },
+  { kind: 'ok',   label: 'attach exhibit: service record',         detail: '4+ years · 3 postings' },
   { kind: 'ok',   label: 'attach exhibit: triage exercise',        detail: 'live-fire · 5 decision points' },
   { kind: 'ok',   label: 'redaction review',                       detail: '0 sections withheld' },
   { kind: 'warn', label: 'coffee ring on page 3',                  detail: 'noted · ignored' },

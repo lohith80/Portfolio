@@ -11,8 +11,8 @@ export const profile = {
   // Raw whoami table — shown in boot + terminal
   whoami: [
     ['name',        'Indu Lohith Narisetty'],
-    ['role',        'Detection Engineer · SOC · IR'],
-    ['experience',  '4y'],
+    ['role',        'AI Detection Engineer · SOC · IR'],
+    ['experience',  '4+ years'],
     ['stack',       'Splunk SPL · Sentinel KQL · Sigma · Falcon · Defender · AWS'],
     ['focus',       'detection-as-code · SOAR · purple-team · cloud IR · AI/LLM security'],
     ['frameworks',  'MITRE ATT&CK · ATLAS · D3FEND · NIST 800-61'],

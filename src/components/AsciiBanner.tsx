@@ -41,7 +41,7 @@ export function AsciiBanner({ className }: { className?: string }) {
         </h1>
 
         <div className="mt-3 flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] uppercase tracking-[0.18em] text-phos sm:text-[13px]">
-          <span>Detection Engineer</span>
+          <span>AI Detection Engineer</span>
           <span className="text-slate-500" aria-hidden>·</span>
           <span>SOC</span>
           <span className="text-slate-500" aria-hidden>·</span>

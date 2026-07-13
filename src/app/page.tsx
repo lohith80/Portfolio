@@ -11,7 +11,7 @@ import { detections } from '@content/detections';
 import { skillGroups } from '@content/skills';
 
 export const metadata: Metadata = {
-  title: `${profile.name} — Detection Engineer`,
+  title: `${profile.name} — AI Detection Engineer`,
   description: profile.oneLine,
   alternates: { canonical: '/' },
 };
@@ -56,7 +56,7 @@ export default function LandingPage() {
                 {'\n\n'}
                 <span className="text-slate-500">$ </span><span className="text-phos">uptime</span>
                 {'\n'}
-                <span className="text-slate-300">{profile.yearsExperience} years — {roles.length} roles — {projects.length} shipped projects — {detections.length}+ production detections</span>
+                <span className="text-slate-300">{profile.yearsExperience}+ years — {roles.length} roles — {projects.length} shipped projects — {detections.length}+ production detections</span>
                 {'\n\n'}
                 <span className="text-slate-500">$ </span><span className="text-phos">cat ~/.motd</span>
                 {'\n'}
@@ -78,7 +78,7 @@ export default function LandingPage() {
                 <QuickKey k="2" href="/projects"   label="projects"     hint={`${projects.length} case studies`} />
                 <QuickKey k="3" href="/attack-matrix" label="attack"    hint="MITRE coverage heatmap" />
                 <QuickKey k="4" href="/triage"     label="triage"       hint="live-fire IR simulator" accent="magenta" />
-                <QuickKey k="5" href="/experience" label="experience"   hint={`${roles.length} roles · 4y`} />
+                <QuickKey k="5" href="/experience" label="experience"   hint={`${roles.length} roles · 4+y`} />
                 <QuickKey k="6" href="/skills"     label="skills"       hint={`${skillCount} entries`} />
                 <QuickKey k="7" href="/book"       label="book"         hint="Google Meet · 15/30m" accent="magenta" />
               </ul>

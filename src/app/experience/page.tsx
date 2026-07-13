@@ -16,7 +16,7 @@ export default function ExperiencePage() {
         <PageBanner
           cmd="cat ~/.service-record"
           cwd="~"
-          caption={`${roles.length} postings · ${profile.yearsExperience}y · most recent first`}
+          caption={`${roles.length} postings · ${profile.yearsExperience}+y · most recent first`}
         />
       </header>
 
@@ -124,7 +124,7 @@ export default function ExperiencePage() {
             <span className="text-slate-200">B.Tech. Computer Science &amp; Engineering</span>
             {'\n'}
             <span className="text-slate-600">    </span>
-            <span className="text-slate-300">Prathyusha Engineering College — India</span>
+            <span className="text-slate-300">Anna University — Chennai, India</span>
             {'\n'}
           </pre>
         </div>
