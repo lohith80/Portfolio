@@ -16,21 +16,40 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: 'promptwarden',
+    title: 'PromptWarden',
+    tagline: 'Security gateway for LLM APIs with SOC-grade telemetry',
+    role: 'solo',
+    status: 'shipped',
+    accent: 'phos',
+    domain: ['appsec', 'detection', 'research'],
+    metrics: [
+      { label: 'Injection detection', value: '20/20 (100%)' },
+      { label: 'False positives', value: '0 / 19 benign' },
+      { label: 'Mapped to', value: 'OWASP LLM Top 10 · ATLAS' },
+    ],
+    stack: ['Python', 'FastAPI', 'OCSF', 'Splunk', 'Sentinel', 'Docker'],
+    summary:
+      'Self-hosted reverse proxy in front of any OpenAI-compatible LLM API. Inspects traffic both ways for prompt injection, jailbreaks, secret/PII egress, and system-prompt leakage, then emits OCSF/CEF security events into Splunk and Sentinel — every detection mapped to OWASP LLM Top 10 and MITRE ATLAS. Ships a STRIDE threat model and an adversarial test corpus (100% detection, zero false positives).',
+    repo: 'https://github.com/lohith80/promptwarden',
+  },
+  {
     slug: 'jsecpy',
     title: 'JSecPy',
-    tagline: 'Python static-analysis toolkit for OWASP Top 10 detection',
+    tagline: 'Java SAST — AST + taint analysis, mapped to CWE and OWASP Top 10',
     role: 'solo',
     status: 'active',
     accent: 'magenta',
     domain: ['appsec', 'research'],
     metrics: [
-      { label: 'Rules', value: '40+' },
-      { label: 'OWASP Top 10', value: 'A01–A10' },
-      { label: 'Output', value: 'Sigma + SARIF' },
+      { label: 'Rules', value: '14 (CWE + OWASP)' },
+      { label: 'Adversarial corpus', value: '0 FN / 0 FP' },
+      { label: 'Output', value: 'SARIF · GitHub Action' },
     ],
-    stack: ['Python', 'AST', 'Sigma', 'SARIF', 'OWASP Top 10'],
+    stack: ['Python', 'javalang', 'AST', 'Taint analysis', 'SARIF'],
     summary:
-      'Static-analysis toolkit scanning Python/JS web projects for OWASP Top 10 patterns. Produces Sigma + SARIF output for pipeline integration.',
+      'Static application security testing for Java: parses source to an AST and runs intra-procedural taint analysis to flag SQL/command/LDAP/XPath injection, path traversal, SSRF, weak crypto, XXE, and unsafe deserialization — 14 rules mapped to CWE and OWASP Top 10. Hardened against a 43-case adversarial corpus (zero false negatives, zero false positives); ships SARIF output and a drop-in GitHub Action.',
+    repo: 'https://github.com/lohith80/JSecPy',
     attack: ['T1190', 'T1059'],
   },
   {
